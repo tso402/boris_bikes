@@ -15,7 +15,7 @@ describe DockingStation do
     expect(docking_station.release_bike).to be_a(Bike)
   end
 
-  describe 'release_bike'do
+  describe '#release_bike'do
   it 'raises error' do
   docking_station = DockingStation.new
   expect{docking_station.release_bike}.to raise_error(RuntimeError)
@@ -26,6 +26,16 @@ describe DockingStation do
     station = DockingStation.new
     bike = Bike.new
     expect(station.dock_bike(bike)).to eq bike
+  end
+
+  describe '#docks a bike' do
+    it 'raises an exception' do
+      station = DockingStation.new
+      bike = Bike.new
+      bike2 = Bike.new
+      station.dock_bike(bike)
+      expect{station.dock_bike(bike2)}.to raise_error 'Error, Another bike already docked'
+    end
   end
 
   it 'shows docked bike' do

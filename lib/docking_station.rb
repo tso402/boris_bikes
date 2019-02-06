@@ -12,6 +12,7 @@ class DockingStation
   end
 
   def dock_bike (bike)
+    fail 'Error, Another bike already docked' unless @stored_bike == nil
     @stored_bike = bike
     return @stored_bike
   end
