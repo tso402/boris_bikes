@@ -11,7 +11,15 @@ describe DockingStation do
   it 'releases a bike' do
     docking_station = DockingStation.new
     bike = Bike.new
+    docking_station.dock_bike(bike)
     expect(docking_station.release_bike).to be_a(Bike)
+  end
+
+  describe 'release_bike'do
+  it 'raises error' do
+  docking_station = DockingStation.new
+  expect{docking_station.release_bike}.to raise_error(RuntimeError)
+  end
   end
 
   it 'docks a bike' do
