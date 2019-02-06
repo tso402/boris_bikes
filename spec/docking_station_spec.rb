@@ -25,15 +25,14 @@ describe DockingStation do
   it 'docks a bike' do
     station = DockingStation.new
     bike = Bike.new
-    expect(station.dock_bike(bike)).to eq bike
+    expect(station.dock_bike(bike)).to include bike
   end
 
   describe '#docks a bike' do
     it 'raises an exception' do
       station = DockingStation.new
-      bike = Bike.new
+      20.times { station.dock_bike Bike.new }
       bike2 = Bike.new
-      station.dock_bike(bike)
       expect{station.dock_bike(bike2)}.to raise_error 'Error, Another bike already docked'
     end
   end
@@ -42,6 +41,6 @@ describe DockingStation do
     station = DockingStation.new
     bike = Bike.new
     station.dock_bike(bike)
-    expect(station.stored_bike).to eq bike
+    expect(station.stored_bikes).to include bike
   end
 end
