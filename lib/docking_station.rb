@@ -2,6 +2,7 @@ require './lib/bike.rb'
 
 class DockingStation
   attr_reader :stored_bikes
+  DEFAULT_CAPACITY = 20
   def initialize
     @stored_bikes = []
   end
@@ -19,7 +20,7 @@ class DockingStation
 
 private
   def full?
-    @stored_bikes.count >= 20
+    @stored_bikes.count >= DEFAULT_CAPACITY
   end
 
   def empty?

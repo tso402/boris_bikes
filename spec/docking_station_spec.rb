@@ -31,7 +31,7 @@ describe DockingStation do
   describe '#docks a bike' do
     it 'raises an exception' do
       station = DockingStation.new
-      20.times { station.dock_bike Bike.new }
+      DockingStation::DEFAULT_CAPACITY.times { station.dock_bike Bike.new }
       bike2 = Bike.new
       expect{station.dock_bike(bike2)}.to raise_error 'Error, Another bike already docked'
     end
