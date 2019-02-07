@@ -43,4 +43,10 @@ describe DockingStation do
     station.dock_bike(bike)
     expect(station.stored_bikes).to include bike
   end
+
+  it 'creates a docking station with supplied capacity' do
+    capacity = 12
+    station = DockingStation.new(capacity)
+    expect(station.capacity).to eq capacity
+  end
 end
